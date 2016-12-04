@@ -1,0 +1,39 @@
+
+{% extends "layout.html" %}
+
+{% block title %}
+    Case History from PACER
+{% endblock %}
+
+{% block content %}
+
+
+{% if cart is equalto [] %}
+<h1>No Cases Found</h1>
+
+
+{% else %}
+<h1>Cases</h1>
+<table>
+    <table style="width:100%">
+    <tr>
+    <th>Year</th>
+    <th>Case Number</th>
+    <th>Nature of Suit</th>
+    <th>Case Name</th>
+  </tr>
+    {% for item in cart %}
+    <tr> 
+       <td>{{ item["cs_year"] }}</td>
+       <td>{{ item["case_number_full"] }}</td>
+       <td>{{ item["nature_of_suit"] }}</td>
+       <td><a href="{{ item["case_link"] }}">{{ item["case_title"] }}</a></td>   
+       </tr>
+    {% endfor %}
+</table>   
+{% endif %}
+
+{% endblock %}
+
+
+
